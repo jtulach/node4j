@@ -10,4 +10,4 @@ process.argv.forEach(function (val, index, array) {
 });
 
 var mainClass = Java.type(className);
-new mainClass(require).run();
+new mainClass(require, global).initialize();
