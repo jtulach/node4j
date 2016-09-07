@@ -1,7 +1,5 @@
 package org.netbeans.html.demo.node4j;
 
-import com.oracle.truffle.api.interop.TruffleObject;
-import com.oracle.truffle.api.interop.java.JavaInterop;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -14,13 +12,13 @@ import net.java.html.lib.Objs;
 import org.netbeans.html.boot.spi.Fn;
 
 public final class Launcher extends Modules.Provider implements Executor {
-    private final CommonJS require;
+    private final Function require;
     private final Objs global;
     private final List<Runnable> queue = new LinkedList<>();
     private final Fn.Presenter presenter;
 
-    public Launcher(TruffleObject require, TruffleObject global) {
-        this.require = JavaInterop.asJavaFunction(CommonJS.class, require);
+    public Launcher(Object require, Object global) {
+        this.require = Function.$as(require);
         this.global = Objs.$as(global);
         this.presenter = TrufflePresenters.create(this);
         System.getProperties().put("org.netbeans.lib.jshell.agent.AgentWorker.executor", this);
@@ -67,12 +65,7 @@ public final class Launcher extends Modules.Provider implements Executor {
 
     @Override
     protected Objs find(String id) {
-        Object module = require.require(null, id);
-        return module == null ? null : Objs.$as(module);
+        Object module = require.apply(null, id);
+        return Objs.$as(module);
     }
-
-    private static interface CommonJS {
-        public Object require(Object thiz, String name);
-    }
-
 }
