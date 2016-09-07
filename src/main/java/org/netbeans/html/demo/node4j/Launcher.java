@@ -15,6 +15,7 @@ public final class Launcher extends Modules.Provider implements Executor {
 
     public Launcher(TruffleObject require) {
         this.require = JavaInterop.asJavaFunction(CommonJS.class, require);
+        System.getProperties().put("org.netbeans.lib.jshell.agent.AgentWorker.executor", this);
     }
 
     public void run() throws Exception {
