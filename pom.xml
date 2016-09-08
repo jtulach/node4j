@@ -10,7 +10,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <exec.java.bin>${java.home}/bin/node</exec.java.bin>
-        <project.mainclass>org.netbeans.html.demo.node4j.Launcher</project.mainclass>
+        <project.mainclass>org.netbeans.demo.node4j.Launcher</project.mainclass>
         <jshell.agent>-Djshell=false</jshell.agent>
         <exec.debug.arg>-Dnodebug</exec.debug.arg>
         <jshell.run.show>true</jshell.run.show>

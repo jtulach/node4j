@@ -1,4 +1,4 @@
-package org.netbeans.html.demo.node4j;
+package org.netbeans.demo.node4j;
 
 import net.java.html.lib.Function;
 import net.java.html.lib.node.http.Exports;
