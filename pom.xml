@@ -49,14 +49,12 @@
                     <arguments>
                         <argument>-J${jshell.agent}</argument>
                         <argument>-J${exec.debug.arg}</argument>
+                        <argument>-J-javaagent:${project.build.directory}/springloaded.jar</argument>
+                        <argument>-J-Xverify:none</argument>
                         <argument>-classpath</argument>
                         <classpath/>
                         <argument>${basedir}/src/main/js/launcher.js</argument>
                         <argument>${project.mainclass}</argument>
-                        <!--
-                        <argument>-javaagent:${project.build.directory}/springloaded.jar</argument>
-                        <argument>-noverify</argument>
-                        -->
                     </arguments>
                 </configuration>
             </plugin>
