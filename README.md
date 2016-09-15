@@ -45,4 +45,47 @@ via type-safe [Java APIs](https://dukescript.com/javadoc/libs/)!
 
 # Using NetBeans and JShell
 
-***TBD***
+The whole `node4j` project is a typical Maven project and you can work with it from any IDE that speaks *Maven*. However, if you download NetBeans IDE with built in support for JShell, we can do even more!
+
+* Start the appropriate NetBeans IDE: `netbeans --jdkhome /path/to/graalvm`
+* Open the `node4j` project
+* Execute the project
+ 
+A JShell console opens up in the editor and you can easily start using all the [node.js](https://nodejs.org/en/) features interactively from Java. Type:
+
+```java
+cre
+```
+and press *Ctrl-Space* to invoke code completion. From the list of available choices select `createServer` method with one `requestListener` parameter. Following will be generated:
+```java
+[19] -> createServer(requestListener)
+```
+press *Ctrl-Space* once again and let the IDE generate the lamda function body:
+```java
+[19] -> createServer((p1, p2) -> {
+            return null;
+})
+```
+optionally rename `p1` to `in` and `p2` to `out` as that is the meaning of the callback parameters in this context. Type in a lamda body to generate a reply:
+```java
+[19] -> createServer((p1, p2) -> {
+    p2.end("Hello from Java!\n");
+    return null;
+})
+```
+after placing the caret at the end of the code snippet and pressing *Enter*, the snippet is evaluated:
+```java
+|  Expression value is: [object Object]
+|    assigned to temporary variable $53 of type Server
+```
+and the value is stored in variable `$53`. Try to use that variable, type:
+```java
+$53.
+```
+and press *Ctrl-Space* to see methods available on this object. Choose `listen` method with one number parameter and bind the server to that port:
+```java
+[20] -> $53.listen(2345)
+|  Expression value is: 
+|    assigned to temporary variable $64 of type Server
+```
+Your first interactive **JShell+Node.js** session is done. Connect to `http://localhost:2345` to verify the server works. 
