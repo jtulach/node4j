@@ -6,12 +6,13 @@ import net.java.html.lib.node.http.*;
 
 class Initialization {
     public void run() {
-        System.err.println("=== Welcome to node4j! ===");
-        System.err.println("Use:");
-        System.err.println(" eval(String)");
-        System.err.println(" createServer(function).listen(port)");
-        System.err.println("or import any other API from");
-        System.err.println(" net.java.html.lib.node.* packages");
-        System.err.println("========= Enjoy! =========");
+        String welcome = "\n" +
+            "=== Welcome to node4j! ===\n" +
+            "Use:\n" +
+            " eval(String)\n" +
+            " createServer(function).listen(port)\n" +
+            "or import any other API from\n" +
+            " net.java.html.lib.node.* packages\n" +
+        "========= Enjoy! =========\n";
     }
 }
