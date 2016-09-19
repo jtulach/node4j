@@ -4,7 +4,7 @@
 * Then you need [Maven](http://maven.apache.org/)
 * And you need to clone the sources: `git clone https://github.com/jtulach/node4j`
 
-With these components, it should be easy to execute the your first [node.js](https://nodejs.org/en/) 
+With these components, it should be easy to execute your first [node.js](https://nodejs.org/en/) 
 application from [Java](http://java.sun.com):
 
 ```bash
