@@ -10,7 +10,7 @@ public final class Main  {
     public static void main(String... args) {
         Server server = createServer((IncomingMessage request, ServerResponse response) -> {
             System.err.println("request for " + request.url());
-            response.end("It works! Hit " + request.url());
+            response.end("It works! Hit " + request.url() + "\n");
             return null;
         });
         server.listen(8080, Function.newFunction((Function.A0<Void>) () -> {
