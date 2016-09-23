@@ -1,5 +1,9 @@
 # Using [node.js](https://nodejs.org/en/) from [Java](http://java.sun.com)
 
+[![Code node.js in Java](https://img.youtube.com/vi/Q_AkHdxBbYw/0.jpg)](https://www.youtube.com/watch?v=Q_AkHdxBbYw)
+
+## Try [it](https://www.youtube.com/watch?v=Q_AkHdxBbYw) Yourself!
+
 * First of all you need suitable Java virtual machine: Download [Graal VM](http://www.oracle.com/technetwork/oracle-labs/program-languages/)
 * Then you need [Maven](http://maven.apache.org/)
 * And you need to clone the sources: `git clone https://github.com/jtulach/node4j`
