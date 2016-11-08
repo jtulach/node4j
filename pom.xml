@@ -46,7 +46,7 @@
                 <version>1.2.1</version>
                 <configuration>
                     <executable>${exec.java.bin}</executable>
-                    <classpathScope>test</classpathScope>
+                    <classpathScope>runtime</classpathScope>
                     <arguments>
                         <argument>-J${jshell.agent}</argument>
                         <argument>-J${exec.debug.arg}</argument>
@@ -95,6 +95,12 @@
             <groupId>com.dukescript.libraries</groupId>
             <artifactId>net.java.html.lib.node</artifactId>
             <version>0.4</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.dukescript.libraries</groupId>
+                    <artifactId>net.java.html.lib.dom</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.netbeans.html</groupId>
