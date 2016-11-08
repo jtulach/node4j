@@ -4,9 +4,10 @@
 
 ## Try [it](https://www.youtube.com/watch?v=Q_AkHdxBbYw) Yourself!
 
-* First of all you need suitable Java virtual machine: Download [Graal VM](http://www.oracle.com/technetwork/oracle-labs/program-languages/)
-* Then you need [Maven](http://maven.apache.org/)
-* And you need to clone the sources: `git clone https://github.com/jtulach/node4j`
+Here is few things that you need:
+* Download [Graal VM from OTN](http://www.oracle.com/technetwork/oracle-labs/program-languages/) ([current sources](https://github.com/jtulach/node4j/commit/927c4c831decdd76e9ebb153cad9e3a884b737ae) were tested with GraalVM 0.17-0.18)
+* Install [Maven](http://maven.apache.org/)
+* Get the sources: `git clone https://github.com/jtulach/node4j`
 
 With these components, it should be easy to execute your first [node.js](https://nodejs.org/en/) 
 application from [Java](http://java.sun.com):
