@@ -49,6 +49,12 @@ public final class Launcher extends Modules.Provider implements Executor {
         loadClass.setAccessible(true);
         Class<?> loopClass = (Class<?>) loadClass.invoke(null, "com.oracle.truffle.trufflenode.EventLoop");
         Method get = loopClass.getMethod("get");
-        return (Executor) get.invoke(null);
+        get.setAccessible(true);
+        try {
+            return (Executor) get.invoke(null);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 }
