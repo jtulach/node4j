@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <exec.java.bin>${java.home}/bin/node</exec.java.bin>
+        <exec.java.bin>${graalvm.home}/bin/node</exec.java.bin>
         <project.mainclass>org.netbeans.demo.node4j.Launcher</project.mainclass>
         <jshell.agent>-Djshell=false</jshell.agent>
         <exec.debug.arg>-Dnodebug</exec.debug.arg>
@@ -110,7 +110,43 @@
         <dependency>
             <groupId>com.oracle.truffle</groupId>
             <artifactId>truffle-api</artifactId>
-            <version>0.18</version>
+            <version>0.20</version>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>graalvm-pre-0.20</id>
+            <activation>
+                <file>
+                    <exists>${java.home}/bin/graalvm</exists>
+                </file>
+            </activation>
+            <properties>
+                <graalvm>${java.home}</graalvm>
+                <polyglot>-polyglot</polyglot>
+            </properties>
+        </profile>
+        <profile>
+            <id>one-level-up</id>
+            <activation>
+                <file>
+                    <exists>${java.home}/../bin/graalvm</exists>
+                </file>
+            </activation>
+            <properties>
+                <graalvm>${java.home}/../</graalvm>
+            </properties>
+        </profile>
+        <profile>
+            <id>graalvm-0.20</id>
+            <activation>
+                <file>
+                    <exists>${java.home}/../../bin/graalvm</exists>
+                </file>
+            </activation>
+            <properties>
+                <graalvm>${java.home}/../../</graalvm>
+            </properties>
+        </profile>
+    </profiles>
 </project>
