@@ -16,9 +16,10 @@ connection.findName = function(id, salary) {
     });
 }
 
-connection.query('SELECT * FROM salaries WHERE salary < 40000', function(error, results, fields) {
+javaPart.doQuery(connection);
+connection.query('SELECT * FROM salaries WHERE salary < 39000', function(error, results, fields) {
 	if (error) throw error;
-	console.log(results[0]);
+	console.log('computed from JS');
         javaPart.results(results, connection);
 	connection.end();
 

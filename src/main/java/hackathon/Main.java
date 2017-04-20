@@ -14,6 +14,18 @@ public class Main {
         connection.connect();
     }
     
+    public void doQuery(Connection connection) {
+        class ComputeSalaries implements Connection.Callback<Salaries> {
+            @Override
+            public void onResult(Object err, List<Salaries> data, Object fields) {
+                System.err.println("computed from Java");
+                results(data, connection);
+            }
+        }
+        TruffleObject fn = JavaInterop.asTruffleFunction(Connection.Callback.class, new ComputeSalaries());
+        connection.query("SELECT * FROM salaries WHERE salary < 39000", fn);
+    }
+    
     public void results(List<Salaries> obj, Connection connection) {
         for (Salaries salary : obj) {
             connection.findName(salary.emp_no(), salary.salary());
