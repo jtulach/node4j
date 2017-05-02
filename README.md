@@ -5,7 +5,7 @@
 ## Try [it](https://www.youtube.com/watch?v=Q_AkHdxBbYw) Yourself!
 
 Here is few things that you need:
-* Download [Graal VM from OTN](http://www.oracle.com/technetwork/oracle-labs/program-languages/) ([current sources](https://github.com/jtulach/node4j/commit/927c4c831decdd76e9ebb153cad9e3a884b737ae) were tested with GraalVM 0.17-0.18)
+* Download [Graal VM from OTN](http://www.oracle.com/technetwork/oracle-labs/program-languages/) ([current sources](https://github.com/jtulach/node4j/commit/927c4c831decdd76e9ebb153cad9e3a884b737ae) were tested with GraalVM 0.19 - 0.23)
 * Install [Maven](http://maven.apache.org/)
 * Get the sources: `git clone https://github.com/jtulach/node4j`
 
@@ -52,8 +52,9 @@ via type-safe [Java APIs](https://dukescript.com/javadoc/libs/)!
 
 The whole `node4j` project is a typical Maven project and you can work with it from any IDE that speaks *Maven*. However, if you download NetBeans IDE with built in support for JShell, we can do even more!
 
-* Start the appropriate NetBeans IDE: `netbeans --jdkhome /path/to/graalvm`
+* Start the NetBeans 9 IDE ([preview builds available](http://bits.netbeans.org/download/trunk/nightly/latest/)): `netbeans --jdkhome /path/to/jdk9`
 * Open the `node4j` project
+* Configure it to use GraalVM 0.23 or newer in File/Properties
 * Execute the project
  
 A JShell console opens up in the editor and you can easily start using all the [node.js](https://nodejs.org/en/) features interactively from Java. Type:

@@ -1,6 +1,11 @@
 
 /* global process, require, Java */
 
+try {
+    var executor = require('graal/event_loop');
+} catch (ignore) {
+}
+
 var className;
 
 process.argv.forEach(function (val, index, array) {
@@ -10,4 +15,4 @@ process.argv.forEach(function (val, index, array) {
 });
 
 var mainClass = Java.type(className);
-new mainClass(require, global).initialize();
+new mainClass(require, global, executor).initialize();

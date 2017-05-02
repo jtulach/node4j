@@ -17,12 +17,12 @@ public final class Launcher extends Modules.Provider implements Executor {
     private final Executor delegate;
     private final Fn.Presenter presenter;
 
-    public Launcher(Object require, Object global) throws Exception {
+    public Launcher(Object require, Object global, Object executor) throws Exception {
+        System.getProperties().put("org.netbeans.lib.jshell.agent.AgentWorker.executor", this);
         this.require = Function.$as(require);
         this.global = Objs.$as(global);
         this.presenter = TrufflePresenters.create(this);
-        this.delegate = findExecutor();
-        System.getProperties().put("org.netbeans.lib.jshell.agent.AgentWorker.executor", this);
+        this.delegate = findExecutor(executor);
     }
 
     public void initialize() throws Exception {
@@ -54,7 +54,10 @@ public final class Launcher extends Modules.Provider implements Executor {
         return Objs.$as(module);
     }
 
-    private static Executor findExecutor() throws Exception {
+    private static Executor findExecutor(Object suggested) throws Exception {
+        if (suggested instanceof Executor) {
+            return (Executor) suggested;
+        }
         Method loadClass = TruffleLocator.class.getDeclaredMethod("loadClass", String.class);
         loadClass.setAccessible(true);
         Class<?> loopClass = (Class<?>) loadClass.invoke(null, "com.oracle.truffle.trufflenode.EventLoop");
