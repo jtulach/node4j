@@ -2,6 +2,7 @@ package org.netbeans.demo.node4j;
 
 import com.oracle.truffle.api.impl.TruffleLocator;
 import java.io.Closeable;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.concurrent.Executor;
 import net.java.html.boot.truffle.TrufflePresenters;
@@ -32,7 +33,16 @@ public final class Launcher extends Modules.Provider implements Executor {
 
     @Override
     public void execute(Runnable command) {
-        delegate.execute(command);
+        delegate.execute(new Runnable() {
+            @Override
+            public void run() {
+                try (Closeable c = Fn.activate(presenter)) {
+                    command.run();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
